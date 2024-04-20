@@ -12,7 +12,7 @@ namespace weblego.Pages
         {
         }
 
-        public IActionResult OnPost()
+        public IActionResult OnPostUpdate()
         {
             Console.WriteLine("Siuu");
             string maSP = Request.Form["inputmasp"];
@@ -71,7 +71,6 @@ namespace weblego.Pages
 
         public IActionResult OnPostDelete()
         {
-            return RedirectToPage("/Index");
             string maSP = Request.Form["inputmasp"];
             string connectionString = Constring.stringg;
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -84,7 +83,68 @@ namespace weblego.Pages
                 deleteCommand.Parameters.AddWithValue("@MaSP", maSP);
                 deleteCommand.ExecuteNonQuery();
 
-                return RedirectToPage("/Index"); // Chuyển hướng sau khi xử lý thành công
+                return RedirectToPage("/BuildMode"); // Chuyển hướng sau khi xử lý thành công
+            }
+        }
+
+        public IActionResult OnPostUpdateND()
+        {
+            string maND = Request.Form["inputmand"];
+            string tenND = Request.Form["inputtennd"];
+            string diaChi = Request.Form["inputdiachi"];
+            string sdt = Request.Form["inputsdt"];
+            string taiKhoan = Request.Form["inputtaikhoan"];
+            string matKhau = Request.Form["inputmatkhau"];
+            string quyenHan = "khach";
+
+            Console.WriteLine("flag 1");
+
+            Console.WriteLine(maND);
+            string connectionString = Constring.stringg;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                // Kiểm tra sản phẩm có tồn tại trong cơ sở dữ liệu hay không
+                string checkQuery = "SELECT COUNT(*) FROM NguoiDung WHERE MaND = @MaND";
+                SqlCommand checkCommand = new SqlCommand(checkQuery, connection);
+                checkCommand.Parameters.AddWithValue("@MaND", maND);
+                int existingCount = (int)checkCommand.ExecuteScalar();
+                Console.WriteLine("flag 2");
+
+                if (existingCount > 0)
+                {
+                    // Nếu sản phẩm đã tồn tại, cập nhật thông tin
+                    string updateQuery = "UPDATE NguoiDung SET TenND = @TenND, DiaChi = @DiaChi, SDT = @SDT, TaiKhoan = @TaiKhoan, MatKhau = @MatKhau WHERE MaND = @MaND";
+                    SqlCommand updateCommand = new SqlCommand(updateQuery, connection);
+                    checkCommand.Parameters.AddWithValue("@MaND", maND);
+                    updateCommand.Parameters.AddWithValue("@TenND", tenND);
+                    updateCommand.Parameters.AddWithValue("@DiaChi", diaChi);
+                    updateCommand.Parameters.AddWithValue("@SDT", sdt);
+                    updateCommand.Parameters.AddWithValue("@TaiKhoan", taiKhoan);
+                    updateCommand.Parameters.AddWithValue("@MatKhau", matKhau);
+                    Console.WriteLine("flag 3");
+
+                    updateCommand.ExecuteNonQuery();
+                    Console.WriteLine("flag 4");
+
+                }
+                else
+                {
+                    // Nếu sản phẩm chưa tồn tại, tạo mới
+                    string insertQuery = "INSERT INTO NguoiDung (TenND, DiaChi, SDT, TaiKhoan, MatKhau, QuyenHan) VALUES (@TenND, @DiaChi, @SDT, @TaiKhoan, @MatKhau, @QuyenHan)";
+                    SqlCommand insertCommand = new SqlCommand(insertQuery, connection);
+                    insertCommand.Parameters.AddWithValue("@TenND", tenND);
+                    insertCommand.Parameters.AddWithValue("@DiaChi", diaChi);
+                    insertCommand.Parameters.AddWithValue("@SDT", sdt);
+                    insertCommand.Parameters.AddWithValue("@TaiKhoan", taiKhoan);
+                    insertCommand.Parameters.AddWithValue("@MatKhau", matKhau);
+                    insertCommand.Parameters.AddWithValue("@QuyenHan", quyenHan);
+
+                    insertCommand.ExecuteNonQuery();
+                }
+
+                return RedirectToPage("/BuildMode"); // Chuyển hướng sau khi xử lý thành công
             }
         }
 

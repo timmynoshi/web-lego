@@ -95,3 +95,7 @@ FROM NguoiDung
 WHERE TaiKhoan='admin'
 
 SELECT * FROM NguoiDung
+
+SELECT COUNT(*) FROM NguoiDung WHERE MaND = 2
+
+UPDATE NguoiDung SET TenND = 'test', DiaChi = 'test', SDT = 'test', TaiKhoan = 'test', MatKhau = 'test' WHERE MaND = 2

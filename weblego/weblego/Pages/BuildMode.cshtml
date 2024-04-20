@@ -51,7 +51,7 @@
             </div>
             
             <div class="col-sm-6" align="center">
-                <button type="submit" class="btn btn-success">Tạo/Sửa</button>
+                    <button type="submit" class="btn btn-success" asp-page-handler="Update">Tạo/Sửa</button>
             </div>
                 <div class="col-sm-6" align="center">
                     <button type="submit" class="btn btn-danger" asp-page-handler="Delete">Xóa</button>
@@ -59,9 +59,47 @@
         </div>
 
         </form>
-
-       
     </div>
-    
+
+    <div class="container- div-sanpham">
+        <form method="post">
+            <div class="row align-items-center">
+
+                <div class="col-sm-6">
+                    <label for="inputmand" class="form-label" id="lb">Mã người dùng</label>
+                    <input type="text" class="form-control" id="inputmand" name="inputmand">
+                </div>
+                <div class="col-sm-6">
+                    <label for="inputtennd" class="form-label" id="lb">Tên người dùng</label>
+                    <input type="text" class="form-control" id="inputtennd" name="inputtennd">
+                </div>
+                <div class="col-sm-6">
+                    <label for="inputdiachi" class="form-label" id="lb">Địa chỉ</label>
+                    <input type="text" class="form-control" id="inputdiachi" name="inputdiachi">
+                </div>
+                <div class="col-sm-6">
+                    <label for="inputsdt" class="form-label" id="lb">Số điện thoại</label>
+                    <input type="text" class="form-control" id="inputsdt" name="inputsdt">
+                </div>
+                <div class="col-sm-6">
+                    <label for="inputtaikhoan" class="form-label" id="lb">Tài khoản</label>
+                    <input type="text" class="form-control" id="inputtaikhoan" name="inputtaikhoan">
+                </div>
+                <div class="col-sm-6">
+                    <label for="inputmatkhau" class="form-label" id="lb">Mật khẩu</label>
+                    <input type="text" class="form-control" id="inputmatkhau" name="inputmatkhau">
+                </div>
+                <div class="col-sm-6" align="center">
+                    <button type="submit" class="btn btn-success" asp-page-handler="UpdateND">Tạo/Sửa</button>
+                </div>
+                <div class="col-sm-6" align="center">
+                    <button type="submit" class="btn btn-danger" asp-page-handler="DeleteND">Xóa</button>
+                </div>
+            </div>
+
+        </form>
+
+
+    </div>
 </body>
 </html>
