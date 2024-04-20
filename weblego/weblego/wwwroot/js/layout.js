@@ -12,6 +12,11 @@
         });
     });
 
+    $("#btnbuild").click(function () {
+        // Chuyển hướng đến trang BuildMode khi nút được click
+        window.location.href = "/BuildMode";
+    });
+
     $("#dropbox_theme").click(function () {
         window.location.href = "/tesstttt"; // Chuyển hướng về trang chính
     });
