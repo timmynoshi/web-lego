@@ -3,3 +3,57 @@
 @{
     Layout = "/Pages/Shared/_LayoutAd.cshtml";
 }
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/buildmode.css" rel="stylesheet">
+
+</head>
+<body>
+    <div class="container- div-sanpham">
+        <div class="row align-items-center">
+            <div class="col-sm-6">
+                <label for="inputmasp" class="form-label" id="lb">Mã Sản phẩm</label>
+                <input type="text" class="form-control" id="inputmasp">
+            </div>
+            <div class="col-sm-6">
+                <label for="inputtensp" class="form-label" id="lb">Tên Sản phẩm</label>
+                <input type="text" class="form-control" id="inputtensp">
+            </div>
+            <div class="col-sm-3">
+                <label for="inputchude" class="form-label" id="lb">Chủ đề</label>
+                <input type="text" class="form-control" id="inputchude">
+            </div>
+            <div class="col-sm-3">
+                <label for="inputtuoi" class="form-label" id="lb">Độ tuổi</label>
+                <input type="number" class="form-control" id="inputtuoi">
+            </div>
+
+            <div class="col-sm-3">
+                <label for="inputtonkho" class="form-label" id="lb">Tồn kho</label>
+                <input type="number" class="form-control" id="inputtonkho">
+            </div>
+            <div class="col-sm-3">
+                <label for="inputgiatien" class="form-label" id="lb">Giá tiền</label>
+                <input type="number" class="form-control" id="inputgiatien">
+            </div>
+            <div class="col-sm-12">
+                <label for="inputimg" class="form-label" id="lb">Hình ảnh</label>
+                <input type="file" class="form-control" id="inputimg">
+            </div>
+            <div class="col-sm-6" align="center">
+                <button type="submit" class="btn btn-success">Tạo/Sửa</button>
+            </div>
+            <div class="col-sm-6" align="center">
+                <button type="submit" class="btn btn-danger">Xóa</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
