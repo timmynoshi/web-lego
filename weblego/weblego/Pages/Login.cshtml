@@ -1,0 +1,48 @@
+﻿@page
+@model weblego.Pages.LoginModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in</title>
+    <link href="~/css/register_login.css" rel="stylesheet">
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    
+</head>
+<body>
+    <div class="container">
+        <div id="div-logo" align="center">
+            <img src="~/image/lego-logo.png" id="logo">
+        </div>
+        <div id="div-tt" align="center" id="btnsignin">
+            Sign in
+        </div>
+        <div id="div-form-signin">
+            <form class="row g-3" method="post">
+                <div class="col-12">
+                    <label for="inputusername" class="form-label" id="lb">Username</label>
+                    <input type="text" class="form-control" id="userName" name="userName" placeholder="Enter ur username">
+                </div>
+                <div class="col-12">
+                    <label for="inputpassword" class="form-label" id="lb">Password</label>
+                    <input type="password" class="form-control" id="passWord" name="passWord" placeholder="Enter ur password">
+                </div>
+                <div class="col-12" align="center">
+                    <button type="submit" class="btn btn-primary">Sign in</button>
+                </div>
+                <div class="col-12" align="center">
+                    <a class="nav-link" href="/Register" id="btnregis">Don't have an account?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+<script src="~/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/login.js"></script>
+
+</html>

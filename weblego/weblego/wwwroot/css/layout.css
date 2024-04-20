@@ -1,0 +1,74 @@
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.div1 {
+    display: flex;
+    justify-content: right;
+    padding: 2px;
+    margin: 2px
+}
+
+.lego-image {
+    height: 24px;
+    width: 26px;
+    margin-right: 4px;
+}
+
+.legologo-image {
+    height: 60px;
+    width: 60px;
+}
+
+.navbar_item {
+    margin-right: 30px;
+    width: auto;
+}
+
+.image-link {
+    height: 24px;
+    width: 24px;
+}
+
+#pad {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+#div2 {
+    background-color: rgb(243, 211, 70);
+    height: 120px;
+    padding: 28px;
+}
+
+#mauvang {
+    background-color: rgb(243, 211, 70);
+    padding: 20px;
+}
+
+
+footer {
+    background-color: gray;
+}
+
+.footer-tt {
+    color: aliceblue;
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 20px;
+}
+
+.footer-1 {
+    color: aliceblue;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.footer-2 {
+    padding: 6px;
+    display: flex;
+}
+
+.footer-2-item {
+    padding: 6px;
+}

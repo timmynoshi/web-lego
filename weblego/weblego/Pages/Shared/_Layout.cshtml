@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link href="~/css/layout.css" rel="stylesheet">
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    
+
+</head>
+<body>
+    <header>
+        <div class="container-fluid div1">
+            <div class="row">
+                @if(User.Identity.IsAuthenticated)
+                {
+                    if(QuyenHan.IsQuanTri)
+                    {
+                        <button class="btn btn-success col">
+                            <img src="~/image/hammer.png" class="lego-image">
+                            Build
+                        </button>
+                        <div class="btn-group col" style="display: block;">
+                            <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="~/image/lego-head.png" class="lego-image">
+                                Account
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/Info">Info</a></li>
+                                <li><a class="dropdown-item" href="#">Order</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#" id="btnlogout">Sign out</a></li>
+
+                            </ul>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="btn-group col" style="display: block;">
+                            <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="~/image/lego-head.png" class="lego-image">
+                                Account
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/Info" id="btninfo">Info</a></li>
+                                <li><a class="dropdown-item" href="#">Order</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#" id="btnlogout">Log out</a></li>
+
+                            </ul>
+                        </div>
+                    }
+
+                }
+                else
+                {
+                    <button class="btn col" id="btnlogin">
+                        <img src="~/image/lego-head.png" class="lego-image">
+                        Sign in
+                    </button>
+                }
+                
+                
+                
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-lg" id="mauvang">
+            <div class="container-fluid">
+                <a class="navbar-brand navbar_item" href="/Index"><img src="~/image/lego-logo.png" class="legologo-image"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown navbar_item" id="pad">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                SHOP
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/SanPhamTheoChuDe" id="dropbox_theme">By theme</a></li>
+                                <li><a class="dropdown-item" href="/SanPhamTheoDoTuoi" id="dropbox_age">By age</a></li>
+                                <li><a class="dropdown-item" href="#">By price</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown navbar_item" id="pad">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                DISCOVERY
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">What is LEGO?</a></li>
+                                <li><a class="dropdown-item" href="#">About us</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item navbar_item" id="pad">
+                            <a class="nav-link" href="#">HELP</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <button class="btn">
+                    <img src="~/image/shopcart.png" class="lego-image">
+                </button>
+            </div>
+        </nav>
+
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="footer-tt">
+                        ABOUT US
+                    </div>
+                    <br>
+                    <div class="footer-1">
+                        TBrick là một cửa hàng chuyên cung cấp các
+                        sản phẩm LEGO chất lượng cao, đem lại trải
+                        nghiệm mua sắm độc đáo và thú vị cho các khách hàng
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="footer-tt">
+                        CONTACT
+                    </div>
+                    <br>
+                    <div class="footer-2">
+                        <div class="footer-2-item">
+                            <img src="~/image/fb-footer.png" class="image-link">
+                        </div>
+                        <div class="footer-2-item">
+                            <img src="~/image/ins-footer.png" class="image-link">
+                        </div>
+                        <div class="footer-2-item">
+                            <img src="~/image/x-footer.png" class="image-link">
+                        </div>
+                        <div class="footer-2-item">
+                            <img src="~/image/yt-footer.png" class="image-link">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="~/js/jquery-3.7.1.min.js"></script>
+    <script src="~/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/layout.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

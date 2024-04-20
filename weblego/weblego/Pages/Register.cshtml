@@ -1,0 +1,53 @@
+﻿@page
+@model weblego.Pages.RegisterModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create account</title>
+    <link href="~/css/register_login.css" rel="stylesheet">
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div id="div-logo" align="center">
+            <img src="~/image/lego-logo.png" id="logo">
+        </div>
+        <div id="div-tt" align="center">
+            Create your LEGO® account
+        </div>
+        <div id="div-form-register">
+            <form class="row g-3" method="post">
+                <div class="col-12">
+                    <label for="inputname" class="form-label" id="lb">Name</label>
+                    <input type="text" class="form-control" id="inputname" name="Name" placeholder="Write ur name">
+                </div>
+                <div class="col-md-6">
+                    <label for="inputusername" class="form-label" id="lb">Username</label>
+                    <input type="text" class="form-control" id="inputusername" name="Username" placeholder="Enter ur username">
+                </div>
+                <div class="col-md-6">
+                    <label for="inputpassword" class="form-label" id="lb">Password</label>
+                    <input type="password" class="form-control" id="inputpassword" name="Password" placeholder="Enter ur password">
+                </div>
+                <div class="col-12">
+                    <label for="inputaddress" class="form-label" id="lb">Address</label>
+                    <input type="text" class="form-control" id="inputaddress" name="Address" placeholder="Enter your address">
+                </div>
+                <div class="col-12">
+                    <label for="inputphone" class="form-label" id="lb">Phone Number</label>
+                    <input type="text" class="form-control" id="inputphone" name="PhoneNumber" placeholder="Enter your phone number">
+                </div>
+                <div class="col-12" align="center">
+                    <button type="submit" class="btn btn-primary">Create account!</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

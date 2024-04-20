@@ -1,0 +1,54 @@
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.product-view {
+    border: 1px solid gray;
+    margin-top: 20px;
+}
+
+
+
+.product-image {
+    padding: 5%;
+}
+.product-info {
+    padding: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-name {
+    font-size: 60px;
+    font-weight: 500;
+}
+
+.product-id {
+    font-size: 30px;
+    font-weight: 500;
+    color: gray;
+}
+
+.product-theme {
+    font-size: 30px;
+    font-weight: 400;
+}
+
+.product-age {
+    font-size: 30px;
+    font-weight: 400;
+}
+
+.product-price {
+    font-size: 40px;
+    font-weight: 600;
+    color: darkred;
+}
+
+.product-btn {
+    font-size: 20px;
+    font-weight: 500;
+    padding: 10px;
+    margin: 30px;
+}

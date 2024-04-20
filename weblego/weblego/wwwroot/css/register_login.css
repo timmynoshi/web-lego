@@ -1,0 +1,41 @@
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#logo {
+    height: 100px;
+    width: 100px;
+}
+
+#div-logo {
+    align-items: center;
+    padding: 20px;
+}
+
+#div-tt {
+    font-size: 20px;
+    font-weight: 500;
+    padding: 20px;
+}
+
+#div-form-register {
+    background-color: gray;
+    padding: 20px;
+    margin-right: 20%;
+    margin-left: 20%;
+    border-radius: 20px;
+    overflow: auto;
+}
+
+#div-form-signin {
+    background-color: gray;
+    padding: 20px;
+    margin-right: 20%;
+    margin-left: 20%;
+    border-radius: 20px;
+    overflow: auto;
+}
+
+#lb {
+    color: aliceblue;
+}

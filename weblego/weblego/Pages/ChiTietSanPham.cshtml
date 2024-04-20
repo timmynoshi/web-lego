@@ -1,0 +1,49 @@
+﻿@page
+@model weblego.Pages.ChiTietSanPhamModel
+@{
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/chitietsanpham.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid product-view">
+        <div class="row align-items-center">
+            <div class="col-sm-6">
+                <img src="~/image/@Model.Product.HinhAnh" class="img-fluid product-image">
+            </div>
+            <div class="col-sm-6">
+                <div class="product-info container">
+                    <div class="row">
+                        <span class="product-name">@Model.Product.TenSP</span>
+                    </div>
+                    <div class="row">
+                        <span class="product-id">#@Model.Product.MaSP</span>
+                    </div>
+                    <div class="row">
+                        <span class="product-theme">Theme: @Model.Product.ChuDe</span>
+                    </div>
+                    <div class="row">
+                        <span class="product-age">Age: @Model.Product.DoTuoi+</span>
+                    </div>
+                    <div class="row">
+                        <span class="product-price">$@Model.Product.DonGia</span>
+                    </div>
+                    <div class="row">
+                        <button class="btn btn-success product-btn">Add to bag</button>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

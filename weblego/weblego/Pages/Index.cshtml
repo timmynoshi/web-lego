@@ -1,0 +1,59 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+    var danhSachSanPham = DanhSachSanPham.danhSachSanPham;
+
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/productview.css" rel="stylesheet">
+</head>
+<body>
+    <div></div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h2>What others are buying</h2>
+            </div>
+        </div>
+
+    </div>
+  
+    @if (danhSachSanPham != null && danhSachSanPham.Any())
+    {
+    <div class="container-fluid" id="itemviewlist">
+        <div class="row">
+                @foreach (var sanPham in danhSachSanPham)
+                {
+                    <div class="col-sm-3 product-view">
+                        <img src="~/image/@sanPham.HinhAnh" class="product-image img-fluid"><hr>
+                        <div class="product-details">
+                            <!-- Thay đổi thẻ p thành thẻ a -->
+                            <a href="ChiTietSanPham?id=@sanPham.MaSP" class="product-name link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">@sanPham.TenSP</a>
+                            <p class="product-price">$@sanPham.DonGia</p>
+                            <button class="btn btn-success product-addbag">Add to bag</button>
+                        </div>
+                    </div>
+                }
+
+        </div>
+    </div>
+    }
+    else
+    {
+        <p>No items found.</p>
+    }
+    
+</body>
+
+
+</html>
+
