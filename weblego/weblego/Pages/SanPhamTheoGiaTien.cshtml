@@ -1,5 +1,5 @@
 ﻿@page
-@model weblego.Pages.SanPhamTheoDoTuoiModel
+@model weblego.Pages.SanPhamTheoGiaTienModel
 @{
     ViewData["Title"] = "Home page";
     var danhSachSanPham = DanhSachSanPham.danhSachSanPham;
@@ -22,27 +22,27 @@
             <div class="row align-items-center theme-view">
                 <div class="col-sm-4">
                     <button class="btn theme-name" type="submit" name="buttonId" value="btn1">
-                        <span class="age-view">1+</span>
+                        <span class="age-view">Under 50$</span>
                     </button>
                 </div>
                 <div class="col-sm-4">
                     <button class="btn theme-name" type="submit" name="buttonId" value="btn2">
-                        <span class="age-view">8+</span>
+                        <span class="age-view">Under 400$</span>
                     </button>
                 </div>
                 <div class="col-sm-4">
                     <button class="btn theme-name" type="submit" name="buttonId" value="btn3">
-                        <span class="age-view">12+</span>
+                        <span class="age-view">Under 1000$</span>
                     </button>
                 </div>
-                
+
             </div>
         </div>
     </form>
     <div class="container">
         <div class="row">
             <div class="col">
-                <h2>By age: @PhanLoai.DoTuoi+</h2>
+                <h2>By price: @PhanLoai.GiaCa$</h2>
             </div>
         </div>
 
@@ -52,7 +52,7 @@
         <div class="row">
             @foreach (var sanPham in danhSachSanPham)
             {
-                @if (sanPham.DoTuoi > PhanLoai.DoTuoi)
+                @if (sanPham.DonGia < PhanLoai.GiaCa)
                 {
                     <div class="col-sm-3 product-view">
                         <img src="~/image/@sanPham.HinhAnh" class="product-image img-fluid"><hr>
@@ -77,4 +77,3 @@
 
 
 </html>
-
