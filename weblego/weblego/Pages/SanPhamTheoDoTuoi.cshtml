@@ -42,7 +42,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h2>By theme</h2>
+                <h2>By age</h2>
             </div>
         </div>
 
@@ -52,7 +52,7 @@
         <div class="row">
             @foreach (var sanPham in danhSachSanPham)
             {
-                @if (sanPham.ChuDe == PhanLoai.ChuDe)
+                @if (sanPham.DoTuoi > PhanLoai.DoTuoi)
                 {
                     <div class="col-sm-3 product-view">
                         <img src="~/image/@sanPham.HinhAnh" class="product-image img-fluid"><hr>
