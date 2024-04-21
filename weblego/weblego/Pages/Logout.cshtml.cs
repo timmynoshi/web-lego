@@ -9,6 +9,8 @@ namespace weblego.Pages
         public async Task<IActionResult> OnGetAsync()
         {
             QuyenHan.tentaikhoan = "";
+            QuyenHan.maND = 0;
+            QuyenHan.IsQuanTri = false;
             // Thực hiện đăng xuất
             await HttpContext.SignOutAsync();
 

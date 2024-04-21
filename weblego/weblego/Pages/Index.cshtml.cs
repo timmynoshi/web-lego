@@ -30,32 +30,36 @@ namespace weblego.Pages
                 QuyenHan.IsQuanTri = false;
             }
             Console.WriteLine(QuyenHan.tentaikhoan);
-
-            using (SqlConnection connection = new SqlConnection(Constring.stringg))
+            if (QuyenHan.tentaikhoan != null) 
             {
-                // Mở kết nối
-                connection.Open();
-
-                // Tạo truy vấn SQL để kiểm tra thông tin đăng nhập
-                string query1 = "SELECT MaND, COUNT(*) FROM NguoiDung WHERE TaiKhoan = @UserName GROUP BY MaND";
-
-                // Tạo đối tượng Command
-                using (SqlCommand command = new SqlCommand(query1, connection))
+                using (SqlConnection connection = new SqlConnection(Constring.stringg))
                 {
-                    // Thêm tham số cho truy vấn SQL để tránh tấn công SQL Injection
-                    command.Parameters.AddWithValue("@UserName", QuyenHan.tentaikhoan);
+                    // Mở kết nối
+                    connection.Open();
 
-                    SqlDataReader reader = command.ExecuteReader();
-                    if (reader.Read()) // Đọc kết quả
+                    // Tạo truy vấn SQL để kiểm tra thông tin đăng nhập
+                    string query1 = "SELECT MaND, COUNT(*) FROM NguoiDung WHERE TaiKhoan = @UserName GROUP BY MaND";
+
+                    // Tạo đối tượng Command
+                    using (SqlCommand command = new SqlCommand(query1, connection))
                     {
-                        // Lấy giá trị MaND từ cột thứ nhất (index 0)
-                        QuyenHan.maND = reader.GetInt32(0);
+                        // Thêm tham số cho truy vấn SQL để tránh tấn công SQL Injection
+                        command.Parameters.AddWithValue("@UserName", QuyenHan.tentaikhoan);
+
+                        SqlDataReader reader = command.ExecuteReader();
+                        if (reader.Read()) // Đọc kết quả
+                        {
+                            // Lấy giá trị MaND từ cột thứ nhất (index 0)
+                            QuyenHan.maND = reader.GetInt32(0);
+                        }
+                        reader.Close();
+                        // Thực thi truy vấn và lấy kết quả
+
+                        Console.WriteLine(QuyenHan.maND);
                     }
-                    reader.Close();
-                    // Thực thi truy vấn và lấy kết quả
-                    Console.WriteLine(QuyenHan.maND);
                 }
             }
+            
 
             string query = "SELECT MaSP, TenSP, ChuDe, DoTuoi, SoLuongTonKho, DonGia, HinhAnh FROM SanPham";
             using (SqlConnection connection = new SqlConnection(Constring.stringg))
