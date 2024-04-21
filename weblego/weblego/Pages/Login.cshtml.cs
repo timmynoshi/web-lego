@@ -28,7 +28,7 @@ namespace weblego.Pages
                 connection.Open();
 
                 // Tạo truy vấn SQL để kiểm tra thông tin đăng nhập
-                string query = "SELECT MaND, COUNT(*) FROM NguoiDung WHERE TaiKhoan = @UserName AND MatKhau = @Password GROUP BY MaND";
+                string query = "SELECT MaND, DiaChi, COUNT(*) FROM NguoiDung WHERE TaiKhoan = @UserName AND MatKhau = @Password GROUP BY MaND, DiaChi";
 
                 // Tạo đối tượng Command
                 using (SqlCommand command = new SqlCommand(query, connection))
@@ -42,6 +42,7 @@ namespace weblego.Pages
                     {
                         // Lấy giá trị MaND từ cột thứ nhất (index 0)
                         QuyenHan.maND = reader.GetInt32(0);
+                        QuyenHan.diaChi = reader.GetString(1);
                     }
                     reader.Close();
                     // Thực thi truy vấn và lấy kết quả

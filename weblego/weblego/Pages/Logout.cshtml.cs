@@ -11,6 +11,7 @@ namespace weblego.Pages
             QuyenHan.tentaikhoan = "";
             QuyenHan.maND = 0;
             QuyenHan.IsQuanTri = false;
+            QuyenHan.diaChi = "";
             // Thực hiện đăng xuất
             await HttpContext.SignOutAsync();
 

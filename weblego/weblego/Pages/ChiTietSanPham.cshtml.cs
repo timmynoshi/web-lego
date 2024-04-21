@@ -49,7 +49,7 @@ namespace weblego.Pages
 
             // Sau khi thêm vào giỏ hàng, chuyển hướng người dùng đến trang giỏ hàng hoặc trang khác
             ViewData["Message"] = "Sản phẩm đã được thêm vào giỏ hàng.";
-            return RedirectToPage("/BuildMode"); ;
+            return RedirectToPage("/Index"); ;
         }
     }
 }

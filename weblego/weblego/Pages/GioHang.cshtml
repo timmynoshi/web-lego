@@ -67,21 +67,22 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                        <input type="radio" class="btn-check" name="PhuongThucThanhToan" id="btnradio1" value="cod" autocomplete="off" checked>
                         <label class="btn btn-outline-warning" for="btnradio1">COD</label>
 
-                        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                        <input type="radio" class="btn-check" name="PhuongThucThanhToan" id="btnradio2" value="onl" autocomplete="off">
                         <label class="btn btn-outline-success" for="btnradio2">Online</label>
                     </div>
                 </div>
                 <div class="col-sm-4 giohang-total">
-                    <span>Order Total: --$</span>
-                </div>
-                <div class="col-sm-4">
-                    <button type="button" class="btn btn-info">Order</button>
+                    <span>Order Total: @Model.TongGiaTri$</span>
                 </div>
             </div>
         </div>
+        <div class="col-sm-4">
+            <button type="submit" class="btn btn-info" name="btnOrder" asp-page-handler="ThanhToan">Order</button>
+        </div>
     </form>
+
 </body>
 </html>
