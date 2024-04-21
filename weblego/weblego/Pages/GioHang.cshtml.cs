@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DoAnWeb.ThanhToan;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
 using System.Data.SqlClient;
@@ -35,6 +36,8 @@ namespace weblego.Pages
                 reader.Close();
             }
             TongGiaTri = TinhTong();
+            int tonggiatrivnd = TongGiaTri * 23000;
+            PaymentInformationModel.Amount = tonggiatrivnd;
         }
 
         public IActionResult OnPostRev(string productId)
@@ -56,9 +59,10 @@ namespace weblego.Pages
 
         }
 
-        public IActionResult OnPostThanhToan(string PhuongThucThanhToan)
+        public void OnPost(string PhuongThucThanhToan)
         {
-            TongGiaTri = TinhTong();
+            
+            
             Console.WriteLine(QuyenHan.diaChi);
             DateTime ngayDatHang = DateTime.Now;
             DateTime ngayDuKienGiao = ngayDatHang.AddDays(3);
@@ -113,7 +117,6 @@ namespace weblego.Pages
                 deleteGioHangCommand.ExecuteNonQuery();
             }
             // Sau khi thực hiện xong, bạn có thể thực hiện các hành động khác, ví dụ: chuyển hướng người dùng đến trang cảm ơn hoặc trang khác
-            return RedirectToPage("/Index");
         }
 
     

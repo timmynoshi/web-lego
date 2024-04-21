@@ -62,7 +62,8 @@
  
     
     <br>
-    <form method="post">
+    <form class="needs-validation" name="frmthanhtoan" action="/Home/CreatePaymentUrl" id="frmCreateOrder" method="post"
+          action="#">
         <div class="giohang-view">
             <div class="row">
                 <div class="col-sm-4">
@@ -80,7 +81,7 @@
             </div>
         </div>
         <div class="col-sm-4">
-            <button type="submit" class="btn btn-info" name="btnOrder" asp-page-handler="ThanhToan">Order</button>
+            <button type="submit" class="btn btn-info" name="btnOrder">Order</button>
         </div>
     </form>
 

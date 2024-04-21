@@ -28,7 +28,7 @@ namespace DoAnWeb.ThanhToan
         public IActionResult PaymentCallback()
         {
             var response = _vnPayService.PaymentExecute(Request.Query);
-            return RedirectToAction("ThanhToanThanhCong", "Home", new { responseCode = response.VnPayResponseCode });
+            return RedirectToAction("ThanhCong","Home", new { responseCode = response.VnPayResponseCode });
         }
     }
 }
