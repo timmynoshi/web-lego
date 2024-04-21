@@ -28,7 +28,7 @@ namespace weblego.Pages
                     connection.Open();
                     SqlCommand insertHoaDonCommand = new SqlCommand(insertHoaDonQuery, connection);
                     insertHoaDonCommand.Parameters.AddWithValue("@MaND", QuyenHan.maND);
-                    insertHoaDonCommand.Parameters.AddWithValue("@ThanhTien", PaymentInformationModel.Amount);
+                    insertHoaDonCommand.Parameters.AddWithValue("@ThanhTien", PaymentInformationModel.Amount/23000);
                     insertHoaDonCommand.Parameters.AddWithValue("@DiaChiGiaoHang", QuyenHan.diaChi);
                     insertHoaDonCommand.Parameters.AddWithValue("@NgayDatHang", ngayDatHang);
                     insertHoaDonCommand.Parameters.AddWithValue("@NgayDuKienGiao", ngayDuKienGiao);
