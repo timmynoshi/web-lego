@@ -28,7 +28,7 @@ namespace weblego.Pages
                 connection.Open();
 
                 // Tạo truy vấn SQL để kiểm tra thông tin đăng nhập
-                string query = "SELECT COUNT(*) FROM NguoiDung WHERE TaiKhoan = @UserName AND MatKhau = @Password";
+                string query = "SELECT MaND, COUNT(*) FROM NguoiDung WHERE TaiKhoan = @UserName AND MatKhau = @Password GROUP BY MaND";
 
                 // Tạo đối tượng Command
                 using (SqlCommand command = new SqlCommand(query, connection))
@@ -37,6 +37,13 @@ namespace weblego.Pages
                     command.Parameters.AddWithValue("@UserName", userName);
                     command.Parameters.AddWithValue("@Password", passWord);
 
+                    SqlDataReader reader = command.ExecuteReader();
+                    if (reader.Read()) // Đọc kết quả
+                    {
+                        // Lấy giá trị MaND từ cột thứ nhất (index 0)
+                        QuyenHan.maND = reader.GetInt32(0);
+                    }
+                    reader.Close();
                     // Thực thi truy vấn và lấy kết quả
                     int count = (int)command.ExecuteScalar();
 
@@ -62,6 +69,8 @@ namespace weblego.Pages
                         ClaimsIdentity ci = new ClaimsIdentity(lst, CookieAuthenticationDefaults.AuthenticationScheme);
                         ClaimsPrincipal cp = new ClaimsPrincipal(ci);
                         HttpContext.SignInAsync(cp);
+                        Console.WriteLine(QuyenHan.maND);
+
                         return RedirectToPage("/Index");
                     }
                     else

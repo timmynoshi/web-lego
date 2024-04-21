@@ -117,7 +117,7 @@ namespace weblego.Pages
                     // Nếu sản phẩm đã tồn tại, cập nhật thông tin
                     string updateQuery = "UPDATE NguoiDung SET TenND = @TenND, DiaChi = @DiaChi, SDT = @SDT, TaiKhoan = @TaiKhoan, MatKhau = @MatKhau WHERE MaND = @MaND";
                     SqlCommand updateCommand = new SqlCommand(updateQuery, connection);
-                    checkCommand.Parameters.AddWithValue("@MaND", maND);
+                    updateCommand.Parameters.AddWithValue("@MaND", maND);
                     updateCommand.Parameters.AddWithValue("@TenND", tenND);
                     updateCommand.Parameters.AddWithValue("@DiaChi", diaChi);
                     updateCommand.Parameters.AddWithValue("@SDT", sdt);
@@ -143,6 +143,24 @@ namespace weblego.Pages
 
                     insertCommand.ExecuteNonQuery();
                 }
+
+                return RedirectToPage("/BuildMode"); // Chuyển hướng sau khi xử lý thành công
+            }
+        }
+
+        public IActionResult OnPostDeleteND()
+        {
+            string maND = Request.Form["inputmand"];
+            string connectionString = Constring.stringg;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                // Xóa sản phẩm dựa trên MaSP
+                string deleteQuery = "DELETE FROM NguoiDung WHERE MaND = @MaND";
+                SqlCommand deleteCommand = new SqlCommand(deleteQuery, connection);
+                deleteCommand.Parameters.AddWithValue("@MaND", maND);
+                deleteCommand.ExecuteNonQuery();
 
                 return RedirectToPage("/BuildMode"); // Chuyển hướng sau khi xử lý thành công
             }

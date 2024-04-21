@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
+using System.Security.Claims;
 
 namespace weblego.Pages
 {
@@ -28,6 +30,32 @@ namespace weblego.Pages
                 QuyenHan.IsQuanTri = false;
             }
             Console.WriteLine(QuyenHan.tentaikhoan);
+
+            using (SqlConnection connection = new SqlConnection(Constring.stringg))
+            {
+                // Mở kết nối
+                connection.Open();
+
+                // Tạo truy vấn SQL để kiểm tra thông tin đăng nhập
+                string query1 = "SELECT MaND, COUNT(*) FROM NguoiDung WHERE TaiKhoan = @UserName GROUP BY MaND";
+
+                // Tạo đối tượng Command
+                using (SqlCommand command = new SqlCommand(query1, connection))
+                {
+                    // Thêm tham số cho truy vấn SQL để tránh tấn công SQL Injection
+                    command.Parameters.AddWithValue("@UserName", QuyenHan.tentaikhoan);
+
+                    SqlDataReader reader = command.ExecuteReader();
+                    if (reader.Read()) // Đọc kết quả
+                    {
+                        // Lấy giá trị MaND từ cột thứ nhất (index 0)
+                        QuyenHan.maND = reader.GetInt32(0);
+                    }
+                    reader.Close();
+                    // Thực thi truy vấn và lấy kết quả
+                    Console.WriteLine(QuyenHan.maND);
+                }
+            }
 
             string query = "SELECT MaSP, TenSP, ChuDe, DoTuoi, SoLuongTonKho, DonGia, HinhAnh FROM SanPham";
             using (SqlConnection connection = new SqlConnection(Constring.stringg))
