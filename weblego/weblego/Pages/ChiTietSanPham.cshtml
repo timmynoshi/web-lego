@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Product Details</title>
     <link href="~/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/css/chitietsanpham.css" rel="stylesheet">
 </head>
@@ -16,34 +16,34 @@
     <div class="container-fluid product-view">
         <div class="row align-items-center">
             <div class="col-sm-6">
-                <img src="~/image/@Model.Product.HinhAnh" class="img-fluid product-image">
+                <img src="~/image/@Model.hinhAnh" class="img-fluid product-image">
             </div>
             <div class="col-sm-6">
                 <div class="product-info container">
                     <div class="row">
-                        <span class="product-name">@Model.Product.TenSP</span>
+                        <span class="product-name">@Model.tenSP</span>
                     </div>
                     <div class="row">
-                        <span class="product-id">#@Model.Product.MaSP</span>
+                        <span class="product-id">#@Model.maSP</span>
                     </div>
                     <div class="row">
-                        <span class="product-theme">Theme: @Model.Product.ChuDe</span>
+                        <span class="product-theme">Theme: @Model.chuDe</span>
                     </div>
                     <div class="row">
-                        <span class="product-age">Age: @Model.Product.DoTuoi+</span>
+                        <span class="product-age">Age: @Model.doTuoi+</span>
                     </div>
                     <div class="row">
-                        <span class="product-price">$@Model.Product.DonGia</span>
+                        <span class="product-price">$@Model.donGia</span>
                     </div>
                     <div class="row">
-                        <button class="btn btn-success product-btn">Add to bag</button>
+                        <!-- Form để gửi dữ liệu khi bấm nút Add to bag -->
+                        <form method="post">
+                            <button type="submit" class="btn btn-success product-btn" name="buttonAction" value="AddToBag">Add to bag</button>
+                        </form>
                     </div>
-                    
-                    
                 </div>
             </div>
         </div>
     </div>
-
 </body>
 </html>
