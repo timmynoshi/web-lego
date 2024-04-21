@@ -55,7 +55,7 @@ namespace weblego.Pages
                         reader.Close();
                         // Thực thi truy vấn và lấy kết quả
 
-                        Console.WriteLine(QuyenHan.maND);
+                        Console.WriteLine(QuyenHan.maND +"cua in div");
                     }
                 }
             }

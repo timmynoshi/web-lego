@@ -6,35 +6,30 @@ namespace weblego.Pages
 {
     public class ChiTietSanPhamModel : PageModel
     {
-        public string maSP;
-        public string tenSP;
-        public string chuDe;
-        public int doTuoi;
-        public int tonKho;
-        public int donGia;
-        public string hinhAnh;
-
-     
-
-
         public SanPham Product { get; private set; }
 
         public void OnGet(string id)
         {
             // Tìm kiếm sản phẩm trong danh sách dựa vào ProductId
             Product = DanhSachSanPham.danhSachSanPham.FirstOrDefault(p => p.MaSP == id);
-            maSP = Product.MaSP; tenSP = Product.TenSP; hinhAnh = Product.HinhAnh;
-            chuDe = Product.ChuDe; doTuoi = Product.DoTuoi; tonKho = Product.SoLuongTonKho;
-            donGia = Product.DonGia;
+            if (SanPhamAdd.maSP != Product.MaSP)
+            {
+                SanPhamAdd.maSP = Product.MaSP;
+                SanPhamAdd.tenSP = Product.TenSP;
+                SanPhamAdd.chuDe = Product.ChuDe;
+                SanPhamAdd.doTuoi = Product.DoTuoi;
+                SanPhamAdd.tonKho = Product.SoLuongTonKho;
+                SanPhamAdd.donGia = Product.DonGia;
+                SanPhamAdd.hinhAnh = Product.HinhAnh;
+            }
+            
         }
 
         public IActionResult OnPostAddToBag()
         {
-            Console.WriteLine(maSP);
-
+            string maSPP = SanPhamAdd.maSP;
             // Lấy giá trị QuyenHan.maND và Product.MaSP
-            int maND = QuyenHan.maND; // Đảm bảo rằng QuyenHan đã được khởi tạo
-            Console.WriteLine(maND);
+            int maNDD = QuyenHan.maND; // Đảm bảo rằng QuyenHan đã được khởi tạo
 
             // Thực hiện thêm vào bảng GioHang
             string connectionString = Constring.stringg;
@@ -45,15 +40,16 @@ namespace weblego.Pages
                 // Tạo câu lệnh SQL để thêm vào bảng GioHang
                 string insertQuery = "INSERT INTO GioHang (MaND, MaSP) VALUES (@MaND, @MaSP)";
                 SqlCommand insertCommand = new SqlCommand(insertQuery, connection);
-                insertCommand.Parameters.AddWithValue("@MaND", maND);
-                insertCommand.Parameters.AddWithValue("@MaSP", maSP);
+                insertCommand.Parameters.AddWithValue("@MaND", maNDD);
+                insertCommand.Parameters.AddWithValue("@MaSP", maSPP);
 
                 // Thực thi câu lệnh SQL
                 insertCommand.ExecuteNonQuery();
             }
 
             // Sau khi thêm vào giỏ hàng, chuyển hướng người dùng đến trang giỏ hàng hoặc trang khác
-            return RedirectToPage("/Index");
+            ViewData["Message"] = "Sản phẩm đã được thêm vào giỏ hàng.";
+            return RedirectToPage("/BuildMode"); ;
         }
     }
 }

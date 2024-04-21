@@ -22,10 +22,25 @@
         }
     }
 
+    public class SanPhamRev
+    {
+        public int MaND { get; set; }
+        public string MaSP { get; set; }
+        
+
+        public SanPhamRev(int maND, string maSP)
+        {
+            MaND = maND;
+            MaSP = maSP;
+            
+        }
+    }
+
 
 
     public static class DanhSachSanPham
     {
         public static List<SanPham> danhSachSanPham = new List<SanPham>();
+        public static List<SanPhamRev> danhSachGioHang = new List<SanPhamRev>();
     }
 }

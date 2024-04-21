@@ -1,5 +1,87 @@
 ﻿@page
 @model weblego.Pages.GioHangModel
 @{
-    Layout = "/Pages/Shared/_LayoutAd.cshtml";
+    var danhsachRev = DanhSachSanPham.danhSachGioHang;
+    var danhsachAll = DanhSachSanPham.danhSachSanPham;
 }
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/giohang.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid giohang-view">
+        @foreach (var sanpham in danhsachRev)
+        {
+            @foreach (var i in danhsachAll)
+            {
+                @if (sanpham.MaSP == i.MaSP)
+                {
+                    <div class="row align-items-center">
+                        <div class="col-sm-3 product-item">
+                            <img src="~/image/@i.HinhAnh" class="img-fluid"/>
+                        </div>
+                        <div class="col-sm-3 product-item">
+                            <span class="product-name">
+                                @i.TenSP
+                            </span>
+                        </div>
+                        <div class="col-sm-2 product-item">
+                            <span class="product-id">
+                                #@i.MaSP
+                            </span>
+                            
+                        </div>
+                        <div class="col-sm-2 product-item">
+                            <span class="product-price">
+                                @i.DonGia$
+                            </span>
+                        </div>
+                        <div class="col-sm-2 product-item">
+                            <form method="post">
+                                <button class="btn btn-danger" name="productId" asp-page-handler="Rev" value="@i.MaSP">
+                                    Remove
+                                </button>
+                            </form>
+                            
+                        </div>
+                        
+         
+                    </div>
+                }
+            }
+            <hr />
+        }
+        
+    </div>
+ 
+    
+    <br>
+    <form method="post">
+        <div class="giohang-view">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                        <label class="btn btn-outline-warning" for="btnradio1">COD</label>
+
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                        <label class="btn btn-outline-success" for="btnradio2">Online</label>
+                    </div>
+                </div>
+                <div class="col-sm-4 giohang-total">
+                    <span>Order Total: --$</span>
+                </div>
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-info">Order</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

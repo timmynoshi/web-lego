@@ -1,0 +1,33 @@
+
+.giohang-view {
+    border: 1px solid gray;
+    border-radius: 20px;
+    padding: 20px
+}
+
+.product-item {
+    margin: 4px;
+}
+
+
+
+.product-name {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.product-id {
+    font-size: 20px;
+    color: gray;
+}
+
+.product-price {
+    font-size: 20px;
+    color: darkred;
+    font-weight: 400;
+}
+
+.giohang-total {
+    font-size: 20px;
+    font-weight: 400;
+}
