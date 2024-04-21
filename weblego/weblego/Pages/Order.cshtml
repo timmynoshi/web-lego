@@ -1,0 +1,54 @@
+﻿@page
+@model weblego.Pages.OrderModel
+@{
+    var danhsachHD = DanSachHoaDon.danhsachHDkhach;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/buildmode.css" rel="stylesheet">
+
+</head>
+<body>  
+    <div class="container- div-sanpham">
+        <form method="post">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">MaHD</th>
+                        <th scope="col">Ngày</th>
+                        <th scope="col">Phương thức thanh toán</th>
+                        <th scope="col">Tình Trạng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var i in danhsachHD)
+                    {
+                        <tr>
+                            <td>@i.MaHD</td>
+                            <td>@i.NgayDatHang</td>
+                            <td>@i.PhuongThucThanhToan</td>
+                            @if(i.TinhTrang)
+                            {
+                                <td>Đã duyệt</td>
+                            }
+                            else
+                            {
+                                <td>Chưa duyệt</td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </form>
+
+    </div>
+</body>
+</html>
+
+

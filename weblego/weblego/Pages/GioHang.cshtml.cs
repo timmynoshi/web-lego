@@ -54,7 +54,6 @@ namespace weblego.Pages
                 return RedirectToPage("/GioHang"); // Chuyển hướng sau khi xử lý thành công
             }
 
-            return Page();
         }
 
         public IActionResult OnPostThanhToan(string PhuongThucThanhToan)

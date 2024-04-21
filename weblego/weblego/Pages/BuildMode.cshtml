@@ -2,6 +2,7 @@
 @model weblego.Pages.BuildModeModel
 @{
     Layout = "/Pages/Shared/_LayoutAd.cshtml";
+    var danhsachhdcanduyet = DanSachHoaDon.danhsachHD;
 }
 
 <!DOCTYPE html>
@@ -98,8 +99,35 @@
             </div>
 
         </form>
-
-
+    </div>
+    <div class="container- div-sanpham">
+        <form method="post">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">MaHD</th>
+                        <th scope="col">Ngày</th>
+                        <th scope="col">Phương thức thanh toán</th>
+                        <th scope="col">Tình Trạng</th>
+                        <th scope="col">Quyết định</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var i in danhsachhdcanduyet)
+                    {
+                        <tr>
+                            <td>@i.MaHD</td>
+                            <td>@i.NgayDatHang</td>
+                            <td>@i.PhuongThucThanhToan</td>
+                            <td>CHƯA DUYỆT</td>
+                            <td><button type="submit" class="btn btn-success" name="btnduyet" value="@i.MaHD" asp-page-handler="Duyet">Duyệt</button></td>
+                        </tr>
+                    }
+                    
+                </tbody>
+            </table>
+        </form>
+        
     </div>
 </body>
 </html>

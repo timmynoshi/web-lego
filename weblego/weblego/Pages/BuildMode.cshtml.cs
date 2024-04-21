@@ -10,6 +10,26 @@ namespace weblego.Pages
     {
         public void OnGet()
         {
+            DanSachHoaDon.danhsachHD.Clear();
+            string query = "SELECT MaHD, NgayDatHang, PhuongThucThanhToan, TinhTrang FROM HoaDon WHERE TinhTrang = 0";
+            using (SqlConnection connection = new SqlConnection(Constring.stringg))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    HDcanduyet hoadon = new HDcanduyet(
+                        reader.GetInt32(0), // MaSP
+                        reader.GetDateTime(1), // NGayDatHAng
+                        reader.GetString(2), // ChuDe
+                        reader.GetBoolean(3)  // DoTuoi
+                    );
+                    DanSachHoaDon.danhsachHD.Add(hoadon);
+                }
+                reader.Close();
+            }
         }
 
         public IActionResult OnPostUpdate()
@@ -166,5 +186,22 @@ namespace weblego.Pages
             }
         }
 
+        public IActionResult OnPostDuyet(int btnduyet)
+        {
+            int MaHD = btnduyet;
+            string connectionString = Constring.stringg;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                // Kiểm tra sản phẩm có tồn tại trong cơ sở dữ liệu hay không
+                string checkQuery = "UPDATE HoaDon SET TinhTrang=1 WHERE MaHD=@MaHD";
+                SqlCommand checkCommand = new SqlCommand(checkQuery, connection);
+                checkCommand.Parameters.AddWithValue("@MaHD", MaHD);
+                checkCommand.ExecuteNonQuery();
+                return RedirectToPage("/BuildMode");
+            }
+
+        }
     }
 }
