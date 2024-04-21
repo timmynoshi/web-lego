@@ -3,6 +3,7 @@
 @{
     Layout = "/Pages/Shared/_LayoutAd.cshtml";
     var danhsachhdcanduyet = DanSachHoaDon.danhsachHD;
+    var danhsachtk = DanSachHoaDon.danhsachTK;
 }
 
 <!DOCTYPE html>
@@ -128,6 +129,44 @@
             </table>
         </form>
         
+    </div>
+    <div class="container- div-sanpham">
+        <form method="post">
+            <div class="container-">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <input type="date" name="dateSearch">
+                    </div>
+                    <div class="col-sm-3">
+                        <button type="submit" class="btn btn-secondary" asp-page-handler="ThongKe">Tìm</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">MaHD</th>
+                    <th scope="col">MaND</th>
+                    <th scope="col">Ngày đặt hàng</th>
+                    <th scope="col">Địa chỉ</th>
+                    <th scope="col">Phương thức thanh toán</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var i in danhsachtk)
+                {
+                    <tr>
+                        <td>@i.MaHD</td>
+                        <td>@i.MaND</td>
+                        <td>@i.NgayDatHang</td>
+                        <td>@i.DiaChi</td>
+                        <td>@i.PhuongThucThanhToan</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
 </body>
 </html>

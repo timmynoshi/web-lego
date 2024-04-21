@@ -203,5 +203,41 @@ namespace weblego.Pages
             }
 
         }
+
+        public IActionResult OnPostThongKe(DateTime dateSearch)
+        {
+            DateTime datetemp = dateSearch;
+            Console.WriteLine(datetemp.ToString());
+
+            DanSachHoaDon.danhsachTK.Clear();
+            string query = "SELECT MaHD, MaND, NgayDatHang, DiaChiGiaoHang, PhuongThucThanhToan " +
+                   "FROM HoaDon " +
+                   "WHERE NgayDatHang > @datetemp";
+            using (SqlConnection connection = new SqlConnection(Constring.stringg))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@datetemp", datetemp);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    int maHD = reader.GetInt32(0); // MaHD
+                    int maND = reader.GetInt32(1); // MaHD
+
+                    DateTime ngayDatHang = reader.GetDateTime(2); // NgayDatHang
+                    string diaChi = reader.GetString(3); // PhuongThucThanhToan
+                    string phuongThucThanhToan = reader.GetString(4); // PhuongThucThanhToan
+
+                    // Tạo đối tượng HDcanduyet và thêm vào danh sách
+                    HDthongke hoadon = new HDthongke(maHD, maND, ngayDatHang, diaChi,phuongThucThanhToan);
+                    DanSachHoaDon.danhsachTK.Add(hoadon);
+                }
+                reader.Close();
+            }
+            return RedirectToPage("/BuildMode");
+
+        }
     }
 }
