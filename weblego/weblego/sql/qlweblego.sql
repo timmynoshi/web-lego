@@ -33,11 +33,12 @@ CREATE TABLE SanPham ( MaSP nvarchar(10),
 					   )
 GO
 
-CREATE TABLE HoaDon ( MaHD nvarchar(4),
+CREATE TABLE HoaDon ( MaHD int IDENTITY(1,1),
+					  MaND int,
+					  ThanhTien int,
+					  DiaChiGiaoHang nvarchar(100),
 					  NgayDatHang date,
 					  NgayDuKienGiao date,
-					  DiaChiGiaoHang nvarchar(100),
-					  MaND int,
 					  PhuongThucThanhToan nvarchar(6),
 					  TinhTrang bit,
 					  PRIMARY KEY(MaHD),
@@ -45,10 +46,9 @@ CREATE TABLE HoaDon ( MaHD nvarchar(4),
 					  )
 GO
 
-CREATE TABLE CTHD ( MaHD nvarchar(4),
+CREATE TABLE CTHD ( MaHD int,
 					MaSP nvarchar(10),
 					SoLuong int,
-					ThanhTien int,
 					PRIMARY KEY(MaHD,MaSP),
 					FOREIGN KEY(MaHD) REFERENCES HoaDon(MaHD),
 					FOREIGN KEY(MaSP) REFERENCES SanPham(MaSP)
@@ -64,6 +64,7 @@ CREATE TABLE GioHang ( MaND int,
 GO
 
 
+SET DATEFORMAT dmy
 
 
 INSERT INTO NguoiDung VALUES (N'Nguyễn Thanh Tín', N'123 Hậu Giang', '0703020165', 'admin', '123', 'admin'),
@@ -84,6 +85,16 @@ INSERT INTO SanPham VALUES ('75361','Spider Tank', 'Star Wars', 9, 2, 50, '75361
 						   ('11037','Creative Space Planets', 'Classic', 5, 4, 35, '11037.webp')
 GO
 
+INSERT INTO HoaDon VALUES ('2', 45,N'321 Điện Biên','12/4/2022','15/4/2022','cod',0),
+						  ('2', 120,N'321 Điện Biên','12/4/2023','15/4/2023','cod',0)
+GO
+
+INSERT INTO CTHD VALUES ('1', '71783', 1),
+						('2', '75375', 1),
+						('2', '42178', 1)
+GO
+
+
 SELECT *
 FROM NguoiDung
 
@@ -99,3 +110,9 @@ SELECT * FROM NguoiDung
 SELECT COUNT(*) FROM NguoiDung WHERE MaND = 2
 
 UPDATE NguoiDung SET TenND = 'test', DiaChi = 'test', SDT = 'test', TaiKhoan = 'test', MatKhau = 'test' WHERE MaND = 2
+
+SELECT *
+FROM HoaDon
+ 
+SELECT *
+FROM CTHD
